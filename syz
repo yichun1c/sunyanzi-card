@@ -1,0 +1,90 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>孙燕姿 · No.001</title><meta http-equiv="refresh" content="0; url=./sunyanzi/"></head><body><p>打开 <a href="./sunyanzi/">孙燕姿 No.001 午夜典藏</a></p></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#09111c">
+  <meta name="description" content="孙燕姿 · No.001 午夜典藏，互动式3D金箔收藏卡。">
+  <title>孙燕姿 · No.001 午夜典藏</title>
+  <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;600&display=swap');
+:root{color-scheme:dark;--gold:#dfc17d;--gold-light:#f7e8bd}*{box-sizing:border-box}body{margin:0;min-height:100svh;overflow:hidden;background:radial-gradient(ellipse at 50% 43%,#1c2d40 0,#101b29 32%,#080d15 74%);color:#efe2c4;font-family:'Noto Serif SC',serif;display:grid;place-items:center;padding:24px;touch-action:pan-y}.ambient{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 100%,#c8a24c0c,transparent 58%)}main{width:min(94vw,720px);display:flex;flex-direction:column;align-items:center;gap:24px}.heading{text-align:center}.eyebrow{font:500 10px 'Cormorant Garamond',serif;letter-spacing:.42em;color:#c5ad77;text-transform:uppercase}.heading h1{font-size:18px;letter-spacing:.2em;font-weight:400;margin:9px 0 0;color:#eee3cc}.stage{width:min(74vw,320px);height:min(67svh,480px);min-height:340px;perspective:1250px;display:grid;place-items:center;touch-action:none;user-select:none}.card{position:relative;width:100%;height:100%;border-radius:16px;overflow:hidden;transform-style:preserve-3d;will-change:transform;cursor:grab;background:linear-gradient(180deg,#233957,#0c1b2e 57%,#080d17);box-shadow:0 34px 90px #0009,0 2px 26px #dcbd6c17;transition:box-shadow .35s}.card:active{cursor:grabbing}.card.dragging{transition:none;box-shadow:0 44px 100px #000b,0 0 38px #dfc17d25}.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 52%;filter:saturate(.9) contrast(1.04);transform:translate3d(var(--bg-x,0px),var(--bg-y,0px),0) scale(1.06);transition:transform .18s ease-out;will-change:transform;pointer-events:none}.fallback{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(ellipse at 52% 44%,#536b82,#1c3047 52%,#091522 100%);color:#d4c094}.fallback svg{width:100%;height:100%;position:absolute;inset:0}.fallback-label{position:relative;z-index:1;margin-top:220px;text-align:center;font:11px 'Cormorant Garamond',serif;letter-spacing:.18em;color:#eee1c2aa}.veil{position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,#06101a0b 24%,#08101b0e 43%,#060b1478 68%,#050810f4 100%),linear-gradient(110deg,#08101a28,#1b2d4400 45%,#070d1766);pointer-events:none}.frame{position:absolute;inset:11px;border:1px solid #dbbc77b8;border-radius:11px;box-shadow:inset 0 0 0 1px #f1dfa322,inset 0 0 30px #eacb711b;pointer-events:none}.frame:after{content:"";position:absolute;inset:5px;border:1px solid #d2ae6142;border-radius:7px}.corner{position:absolute;width:26px;height:26px;border-color:var(--gold-light);border-style:solid;filter:drop-shadow(0 0 5px #e9c36c80)}.tl{top:7px;left:7px;border-width:2px 0 0 2px;border-radius:7px 0}.tr{top:7px;right:7px;border-width:2px 2px 0 0;border-radius:0 7px}.bl{bottom:7px;left:7px;border-width:0 0 2px 2px;border-radius:0 0 0 7px}.br{bottom:7px;right:7px;border-width:0 2px 2px 0;border-radius:0 0 7px}.topline,.bottom,.meta,.frame{z-index:4}.topline{position:absolute;top:30px;left:30px;right:30px;display:flex;justify-content:space-between;align-items:start}.mark{font:500 10px 'Cormorant Garamond',serif;letter-spacing:.26em;text-transform:uppercase;color:#eee0bd;text-shadow:0 1px 10px #000}.edition{font:500 10px 'Cormorant Garamond',serif;letter-spacing:.16em;border:1px solid #d9bd7a88;padding:6px 8px;background:#0c142348;backdrop-filter:blur(6px)}.bottom{position:absolute;left:30px;right:30px;bottom:34px}.overline{font:500 9px 'Cormorant Garamond',serif;letter-spacing:.3em;color:#e6cb88;margin-bottom:8px;text-transform:uppercase}.name{font-size:34px;line-height:1.08;letter-spacing:.12em;color:#fff8e9;text-shadow:0 2px 22px #000;white-space:nowrap}.roman{font:500 12px 'Cormorant Garamond',serif;letter-spacing:.24em;color:#e4d1a4;margin-top:7px}.rule{height:1px;background:linear-gradient(90deg,#e2c477,#e2c47750,transparent);margin:14px 0 11px}.tag{display:flex;align-items:center;gap:12px}.tag i{display:block;width:17px;height:1px;background:#d9bb75}.tag span{font-size:14px;letter-spacing:.22em;color:#f1dfb7}.meta{position:absolute;left:30px;right:30px;bottom:17px;display:flex;justify-content:space-between;font:9px 'Cormorant Garamond',serif;letter-spacing:.18em;color:#d9c79999;text-transform:uppercase}.shine{position:absolute;inset:-30%;z-index:5;background:linear-gradient(var(--foil-angle,128deg),transparent 37%,#8db9df20 45%,#fff0c75e 49%,#f1d98750 51%,#9ac7ed22 56%,transparent 64%);background-size:180% 180%;background-position:var(--foil-x,50%) var(--foil-y,50%);transform:translate3d(var(--foil-shift-x,0px),var(--foil-shift-y,0px),48px) scale(1.12);opacity:var(--foil-opacity,.18);mix-blend-mode:screen;transition:opacity .18s ease,transform .18s ease,background .18s ease;pointer-events:none}.card.dragging .shine{transition:none}.card.dragging .shine{animation:none}.grain{position:absolute;inset:0;z-index:6;opacity:.10;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E")}.caption{text-align:center;color:#bcae91;font:10px 'Cormorant Garamond',serif;letter-spacing:.23em}.caption b{color:#e5ca8d;font-weight:400}.hint{font:11px 'Noto Serif SC',serif;letter-spacing:.08em;color:#9f9a8d;text-align:center}.controls{display:flex;gap:10px;align-items:center}.controls button,.upload{background:#ffffff08;border:1px solid #d8bd784c;color:#e5d4a8;border-radius:999px;padding:9px 16px;font:11px 'Noto Serif SC',serif;letter-spacing:.08em;cursor:pointer}.controls button:hover,.upload:hover{background:#d3b66c16;border-color:#dfc17d99}.upload input{display:none}.tip{font-size:10px;color:#817e77;letter-spacing:.04em;text-align:center;line-height:1.7}@media(max-height:720px){main{gap:13px}.stage{height:min(61svh,400px);min-height:300px}.heading h1{font-size:15px}.bottom{bottom:28px}.hint{font-size:10px}}@media(prefers-reduced-motion:reduce){.shine{animation:none}}
+/* Reference-matched holographic depth pass */
+.card{overflow:visible;border-radius:16px;isolation:isolate;--foil-hue:185deg;}
+.photo{border-radius:15px;transform:translate3d(var(--bg-x,0px),var(--bg-y,0px),-10px) scale(1.12);filter:saturate(1.05) contrast(1.08);}
+
+.fallback,.veil,.grain,.shine{border-radius:15px;}
+.veil{transform:translateZ(7px);}
+.topline,.bottom,.meta,.frame{transform:translateZ(48px);}
+.shine{inset:0;z-index:70;mix-blend-mode:color-dodge;filter:saturate(1.65) contrast(1.12);background:radial-gradient(ellipse at var(--glint-x,50%) var(--glint-y,50%),#fffbdc85 0%,#8cf3ff50 12%,#e8aaff36 25%,transparent 43%),linear-gradient(var(--foil-angle,128deg),transparent 8%,#67e7ff35 20%,#e4ffffa0 30%,#f4a6ee73 40%,#ffe28d94 52%,#72f6de76 65%,#78a7ff42 76%,transparent 89%),repeating-linear-gradient(var(--foil-angle,128deg),#fff0 0 8%,#b5ffff24 9%,#fff0 13%,#f8d8ff1b 15%,#fff0 20%);background-size:100% 100%,220% 220%,180% 180%;background-position:var(--foil-x,50%) var(--foil-y,50%);opacity:var(--foil-opacity,.2);transform:translate3d(var(--foil-shift-x,0px),var(--foil-shift-y,0px),68px) scale(1.015);transition:opacity .12s ease,background-position .12s ease;}
+.grain{z-index:72;transform:translateZ(72px);opacity:.07;}
+.frame{z-index:84;}
+.card:after{content:"";position:absolute;inset:0;border-radius:15px;pointer-events:none;z-index:82;transform:translateZ(52px);box-shadow:inset 0 0 0 2px #f7e8bd75,0 0 0 1px #ffffff40,0 0 20px #74e9ff22;}
+@media(prefers-reduced-motion:reduce){.photo,.subject,.shine{transition:none}}.fallback{transform:translateZ(-10px);}
+.topline,.bottom,.meta,.frame{transform:translateZ(18px);}
+.card:after{transform:translateZ(20px);}/* Keep every layer inside the card; separate the clean plate from the extracted subject. */
+.card{overflow:hidden!important;isolation:isolate;}
+.photo{z-index:1;object-position:50% 52%;transform:translate3d(var(--bg-x,0px),var(--bg-y,0px),0) scale(1.1);filter:saturate(.98) contrast(1.04);}
+
+.fallback{z-index:0;transform:none;}
+.veil{transform:none;}
+.topline,.bottom,.meta,.frame{transform:none;}
+.shine{z-index:5;transform:translate3d(var(--foil-shift-x,0px),var(--foil-shift-y,0px),0) scale(1.015);}
+.grain{z-index:6;transform:none;}
+.card:after{z-index:7;transform:none;}
+.shine{background:linear-gradient(var(--foil-angle,128deg),transparent 20%,#67e7ff35 31%,#e4ffff9a 40%,#f4a6ee68 47%,#ffe28d84 54%,#72f6de68 63%,#78a7ff35 72%,transparent 82%),repeating-linear-gradient(var(--foil-angle,128deg),#fff0 0 9%,#b5ffff22 10%,#fff0 14%,#f8d8ff18 16%,#fff0 21%)!important;background-size:220% 220%,180% 180%!important;background-position:var(--foil-x,50%) var(--foil-y,50%)!important;}
+.card{overflow:hidden}.photo{transform:scale(1.02)!important;filter:none!important}.subject{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 52%;transform:translate3d(var(--subject-x,0px),var(--subject-y,0px),34px) scale(1.02)!important;filter:none!important;mask:none!important;-webkit-mask:none!important;z-index:2;pointer-events:none}.veil{z-index:3}.shine{z-index:5}
+  </style>
+</head>
+<body>
+<div class="ambient"></div>
+<main><header class="heading"><div class="eyebrow">THE VOICE · ARCHIVE</div><h1>午夜海蓝 · 金箔典藏</h1></header><div class="stage" id="stage"><article aria-label="可拖动旋转的孙燕姿典藏卡" class="card" id="card"><div aria-hidden="true" class="fallback" id="fallback"><svg preserveaspectratio="xMidYMid slice" viewbox="0 0 320 480"><defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#344f70"></stop><stop offset=".68" stop-color="#142d4b"></stop><stop offset="1" stop-color="#091827"></stop></linearGradient><linearGradient id="water" x2="0" y2="1"><stop stop-color="#1c3a5e"></stop><stop offset="1" stop-color="#081523"></stop></linearGradient><radialGradient id="glow"><stop stop-color="#edc981" stop-opacity=".8"></stop><stop offset="1" stop-color="#edc981" stop-opacity="0"></stop></radialGradient></defs><rect fill="url(#sky)" height="480" width="320"></rect><ellipse cx="92" cy="280" fill="url(#glow)" rx="76" ry="42"></ellipse><path d="M0 287 Q52 278 105 286 T210 283 T320 285V480H0Z" fill="url(#water)"></path><path d="M80 286 Q91 330 90 480 M96 287 Q114 340 119 480 M109 287 Q132 346 145 480" fill="none" stroke="#b7c7d4" stroke-opacity=".20"></path><path d="M0 80 Q30 55 60 78T115 74 M0 132 Q44 105 77 128T145 124 M185 95 Q225 74 250 99T320 91" fill="none" stroke="#afc2d8" stroke-opacity=".12"></path><path d="M91 480 Q101 370 112 331 Q123 312 143 313 Q154 286 180 286 Q206 287 216 313 Q228 330 236 480Z" fill="#080d17"></path><ellipse cx="173" cy="260" fill="#c5b5b0" rx="42" ry="51"></ellipse><path d="M132 266 Q126 214 160 207 Q196 197 215 230L220 272Q202 242 190 227Q170 250 132 266Z" fill="#101018"></path><path d="M134 265Q145 230 165 221M212 247Q204 228 191 220" fill="none" stroke="#15151d" stroke-width="7"></path><path d="M130 311Q146 297 165 302Q195 296 214 316" fill="none" stroke="#131822" stroke-width="9"></path></svg><div class="fallback-label">TWILIGHT OVER THE SEA</div></div><img alt="已清理人物残影的暮色海景" class="photo" hidden="" id="photo" src="./assets/background-clean.png"/><img alt="" aria-hidden="true" class="subject" hidden="" id="subject" src="./assets/subject-alpha.png"/><div class="veil"></div><div class="topline"><div class="mark">THE VOICE · ARCHIVE</div><div class="edition">NO. 001</div></div><div class="bottom"><div class="overline">SUN YAN-ZI · SUN YANZI</div><div class="name">孫燕姿</div><div class="roman">SUN YANZI</div><div class="rule"></div><div class="tag"><i></i><span>冷门歌手</span></div></div><div class="meta"><span>LIMITED EDITION</span><span>01 / 01</span></div><div class="frame"><b class="corner tl"></b><b class="corner tr"></b><b class="corner bl"></b><b class="corner br"></b></div><div class="shine"></div><div class="grain"></div></article></div><div class="caption">MIDNIGHT BLUE · <b>GOLD FOIL COLLECTION</b></div><div class="hint">按住卡片并拖动 · 任意角度旋转</div><div class="controls"><button id="reset" type="button">正面朝向</button></div></main>
+<script>
+
+const card=document.querySelector('#card'),stage=document.querySelector('#stage'),photo=document.querySelector('#photo'),fallback=document.querySelector('#fallback');photo.addEventListener('load',()=>{photo.hidden=false;fallback.hidden=true});photo.addEventListener('error',()=>{photo.hidden=true;fallback.hidden=false});if(photo.complete&&photo.naturalWidth){photo.hidden=false;fallback.hidden=true}let rx=-5,ry=0,down=false,lastX=0,lastY=0,velX=0,velY=0,raf=0;const render=()=>{card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;const nx=Math.sin(ry*Math.PI/180),ny=Math.sin(rx*Math.PI/180);card.style.setProperty('--bg-x',`${-nx*24}px`);card.style.setProperty('--bg-y',`${ny*18}px`);card.style.setProperty('--subject-x',`${nx*36}px`);card.style.setProperty('--subject-y',`${-ny*27}px`);card.style.setProperty('--foil-x',`${50+nx*46}%`);card.style.setProperty('--foil-y',`${50-ny*40}%`);card.style.setProperty('--glint-x',`${50+nx*42}%`);card.style.setProperty('--glint-y',`${50-ny*38}%`);card.style.setProperty('--foil-angle',`${112+ry*1.1-rx*.42}deg`);card.style.setProperty('--foil-hue',`${((ry*1.45+rx*1.1)%360+360)%360}deg`);card.style.setProperty('--foil-shift-x',`${nx*18}px`);card.style.setProperty('--foil-shift-y',`${ny*15}px`);card.style.setProperty('--foil-opacity',`${Math.min(.76,.03+(Math.abs(nx)+Math.abs(ny))*.4)}`)};render();stage.addEventListener('pointerdown',e=>{down=true;lastX=e.clientX;lastY=e.clientY;card.classList.add('dragging');stage.setPointerCapture(e.pointerId);cancelAnimationFrame(raf)});stage.addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-lastX,dy=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;velY=dx*.42;velX=-dy*.42;ry+=velY;rx=Math.max(-88,Math.min(88,rx+velX));render()});function release(){if(!down)return;down=false;card.classList.remove('dragging');let n=0;const spin=()=>{if(down||n++>70)return;velX*=.94;velY*=.94;if(Math.abs(velX)+Math.abs(velY)<.08)return;rx=Math.max(-88,Math.min(88,rx+velX));ry+=velY;render();raf=requestAnimationFrame(spin)};raf=requestAnimationFrame(spin)}stage.addEventListener('pointerup',release);stage.addEventListener('pointercancel',release);stage.addEventListener('lostpointercapture',release);document.querySelector('#reset').addEventListener('click',()=>{down=false;cancelAnimationFrame(raf);rx=-5;ry=0;render()});
+
+const subject=document.querySelector("#subject"); if(subject){subject.addEventListener("error",()=>{subject.hidden=true});subject.addEventListener("load",()=>{subject.hidden=false});if(subject.complete)subject.hidden=!Boolean(subject.naturalWidth);}
+
+</script>
+</body>
+</html>
+
+# 孙燕姿 No.001：Cloudflare Workers 静态资源部署版（修复 Wrangler 检测失败）
+
+本版与已创建的 **Cloudflare Worker** `sunyanzi-card` 兼容，保留原作品 HTML/CSS/JS 与两张素材。无需安装 npm 依赖或构建打包。
+
+## 正确目录（仓库根目录）
+
+```
+README.md
+wrangler.jsonc
+public/
+  index.html                  # 访问 Worker 根目录时跳转到收藏卡
+  sunyanzi/
+    index.html                # 真实收藏卡网页
+    assets/
+      background-clean.png
+      subject-alpha.png
+```
+
+## 操作
+1. 解压此 ZIP，在 GitHub 仓库 `yichun1c/sunyanzi-card` 的 main 分支上传 **wrangler.jsonc 文件及 public 文件夹（含子目录里的所有文件）**。切忌上传 ZIP 本身，或把 HTML 作为没有扩展名的“孙燕姿”文件。
+2. 确认网页能看到 `wrangler.jsonc` 和 `public/`，展开能看到 `public/sunyanzi/index.html` 和两张 PNG。
+3. Cloudflare → Worker `sunyanzi-card` → Settings → Build，确保 Root directory 是仓库根目录（留空或 `/`），Build command 留空，Deploy command `npx wrangler deploy`。
+4. 重新部署、在 Cloudflare 分配的 workers.dev 地址访问 `/sunyanzi/`。
+5. 最后需要单独配置路由，才能让个人域名 `https://yichun1c.dpdns.org/sunyanzi/` 生效，不能直接把整个域名绑定到这个 Worker 以免覆盖首页。
+
+## 失败根因
+此前日志：`Could not detect directory of static assets`。此项目用 `wrangler.jsonc` 的 `assets.directory: ./public` 明确指定静态资源位置。
+
+仍需验证 Cloudflare 实际部署；本 ZIP 只是配置与源文件完整性检查通过，不能代替线上部署验收。
+
+{
+  "name": "sunyanzi-card",
+  "compatibility_date": "2026-10-17",
+  "assets": {
+    "directory": "./public"
+  }
+}
