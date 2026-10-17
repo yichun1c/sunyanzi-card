@@ -1,0 +1,6 @@
+node_modules/
+.wrangler/
+dist/
+.deploy-secrets.json
+.dev.vars
+*.log

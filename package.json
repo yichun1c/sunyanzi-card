@@ -1,0 +1,14 @@
+{
+  "name": "sunyanzi-card",
+  "version": "1.0.0",
+  "private": true,
+  "description": "孙燕姿 No.001 3D 金箔收藏卡 — Cloudflare Workers 静态站点",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "deploy:dry": "wrangler deploy --dry-run --outdir=dist"
+  },
+  "devDependencies": {
+    "wrangler": "^4.42.0"
+  }
+}

@@ -1,4 +1,3 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>孙燕姿 · No.001</title><meta http-equiv="refresh" content="0; url=./sunyanzi/"></head><body><p>打开 <a href="./sunyanzi/">孙燕姿 No.001 午夜典藏</a></p></body></html>
 <!doctype html>
 <html lang="zh-CN">
 <head>
@@ -50,41 +49,3 @@ const subject=document.querySelector("#subject"); if(subject){subject.addEventLi
 </script>
 </body>
 </html>
-
-# 孙燕姿 No.001：Cloudflare Workers 静态资源部署版（修复 Wrangler 检测失败）
-
-本版与已创建的 **Cloudflare Worker** `sunyanzi-card` 兼容，保留原作品 HTML/CSS/JS 与两张素材。无需安装 npm 依赖或构建打包。
-
-## 正确目录（仓库根目录）
-
-```
-README.md
-wrangler.jsonc
-public/
-  index.html                  # 访问 Worker 根目录时跳转到收藏卡
-  sunyanzi/
-    index.html                # 真实收藏卡网页
-    assets/
-      background-clean.png
-      subject-alpha.png
-```
-
-## 操作
-1. 解压此 ZIP，在 GitHub 仓库 `yichun1c/sunyanzi-card` 的 main 分支上传 **wrangler.jsonc 文件及 public 文件夹（含子目录里的所有文件）**。切忌上传 ZIP 本身，或把 HTML 作为没有扩展名的“孙燕姿”文件。
-2. 确认网页能看到 `wrangler.jsonc` 和 `public/`，展开能看到 `public/sunyanzi/index.html` 和两张 PNG。
-3. Cloudflare → Worker `sunyanzi-card` → Settings → Build，确保 Root directory 是仓库根目录（留空或 `/`），Build command 留空，Deploy command `npx wrangler deploy`。
-4. 重新部署、在 Cloudflare 分配的 workers.dev 地址访问 `/sunyanzi/`。
-5. 最后需要单独配置路由，才能让个人域名 `https://yichun1c.dpdns.org/sunyanzi/` 生效，不能直接把整个域名绑定到这个 Worker 以免覆盖首页。
-
-## 失败根因
-此前日志：`Could not detect directory of static assets`。此项目用 `wrangler.jsonc` 的 `assets.directory: ./public` 明确指定静态资源位置。
-
-仍需验证 Cloudflare 实际部署；本 ZIP 只是配置与源文件完整性检查通过，不能代替线上部署验收。
-
-{
-  "name": "sunyanzi-card",
-  "compatibility_date": "2026-10-17",
-  "assets": {
-    "directory": "./public"
-  }
-}
