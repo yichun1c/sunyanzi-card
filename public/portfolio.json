@@ -1,0 +1,14 @@
+{
+  "works": [
+    {
+      "number": "01",
+      "type": "COLLECTIBLE EXPERIENCE",
+      "title": "午夜海蓝 · 金箔典藏",
+      "description": "以孙燕姿的海边照片为灵感，把星夜、海面与镭射金箔做成一张可转动、可翻面的数字收藏卡。",
+      "image": "/sunyanzi/assets/background-clean.png",
+      "href": "/sunyanzi/",
+      "tags": ["3D 视差", "动态镭射", "每日曲目"],
+      "linkLabel": "进入作品"
+    }
+  ]
+}
