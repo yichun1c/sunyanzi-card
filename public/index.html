@@ -3,42 +3,81 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#080d15">
-  <meta name="description" content="YICHUN1C 数字收藏入口 — 孙燕姿 No.001 午夜典藏 3D 金箔收藏卡。">
-  <title>YICHUN1C · 数字收藏</title>
+  <meta name="theme-color" content="#08111d">
+  <meta name="description" content="在午夜海风里，收藏一张孙燕姿 No.001 金箔典藏卡。">
+  <title>YICHUN1C · 午夜典藏</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root{color-scheme:dark;--gold:#dfc17d;--ink:#efe2c4}
+    :root{color-scheme:dark;--gold:#dfc17d;--cream:#f5ecd7;--ink:#09121c}
     *{box-sizing:border-box}
-    html,body{min-height:100%}
-    body{margin:0;min-height:100svh;display:grid;place-items:center;padding:28px;background:radial-gradient(ellipse at 50% 30%,#1b2c3f 0,#0e1926 38%,#070b12 78%);color:var(--ink);font-family:"Noto Serif SC","Songti SC",Georgia,serif}
-    body::after{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 105%,#c8a24c14,transparent 60%)}
-    main{width:min(92vw,560px);position:relative;z-index:1}
-    .eyebrow{margin:0 0 18px;font:500 10px/1.4 "Cormorant Garamond",Georgia,serif;letter-spacing:.44em;text-transform:uppercase;color:#c5ad77}
-    h1{margin:0 0 40px;font-size:clamp(30px,7vw,52px);font-weight:400;letter-spacing:.12em;line-height:1.15;color:#f0e5ce}
-    h1 small{display:block;margin-top:12px;font-size:11px;letter-spacing:.3em;color:#9d8f72}
-    .entry{display:block;padding:24px 26px 22px;border:1px solid #dfc17d3d;border-radius:14px;background:linear-gradient(135deg,#dfc17d10,#ffffff03 46%,#dfc17d08);text-decoration:none;color:inherit;transition:border-color .25s,transform .25s,background .25s}
-    .entry:hover,.entry:focus-visible{border-color:#dfc17d9e;background:linear-gradient(135deg,#dfc17d1c,#ffffff05 46%,#dfc17d12);transform:translateY(-2px);outline:none}
-    .no{display:block;font:500 10px/1 "Cormorant Garamond",Georgia,serif;letter-spacing:.34em;color:#bfa66d}
-    .name{display:block;margin:14px 0 6px;font-size:21px;letter-spacing:.14em;color:#f3e9d5}
-    .desc{display:block;font-size:12px;letter-spacing:.22em;color:#a89a7d}
-    .arrow{display:flex;align-items:center;justify-content:space-between;margin-top:26px;padding-top:16px;border-top:1px solid #dfc17d24;font:500 10px/1 "Cormorant Garamond",Georgia,serif;letter-spacing:.3em;color:#d8c08a}
-    .arrow span:last-child{font-size:14px;letter-spacing:.1em;transition:transform .25s}
-    .entry:hover .arrow span:last-child{transform:translateX(4px)}
-    .foot{margin:34px 0 0;font:400 10px/1.7 "Cormorant Garamond",Georgia,serif;letter-spacing:.2em;color:#6f6656}
-    @media(prefers-reduced-motion:reduce){.entry,.arrow span:last-child{transition:none}}
+    html,body{margin:0;min-height:100%;background:var(--ink);color:var(--cream)}
+    body{min-height:100svh;overflow:hidden;font-family:'Noto Serif SC',serif}
+    .backdrop{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%;filter:brightness(.53) saturate(.86);transform:scale(1.04);animation:drift 22s ease-in-out infinite alternate}
+    .shade{position:fixed;inset:0;background:linear-gradient(90deg,#07111bf2 0%,#09131bd9 38%,#09131b60 72%,#06101b9c 100%),linear-gradient(0deg,#050a12d9,transparent 38%,#07101b4a);pointer-events:none}
+    .stars{position:fixed;inset:0;opacity:.19;pointer-events:none;background-image:radial-gradient(#f5dfae .65px,transparent .8px);background-size:43px 43px;mask-image:linear-gradient(#000,transparent 72%)}
+    .page{position:relative;z-index:1;min-height:100svh;display:flex;flex-direction:column;padding:clamp(22px,4vw,54px) clamp(22px,7vw,104px)}
+    .top,.foot{display:flex;justify-content:space-between;align-items:center;gap:18px;font:500 9px 'Cormorant Garamond',serif;letter-spacing:.27em;color:#e7d9b7a8}
+    .top span:first-child{color:#e9d6a4}
+    main{width:min(1120px,100%);margin:auto;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:4vw}
+    .copy{padding:30px 0 40px;animation:rise .9s both}
+    .kicker{display:flex;align-items:center;gap:13px;font:500 10px 'Cormorant Garamond',serif;letter-spacing:.32em;color:#e3c87e}
+    .kicker i{width:29px;height:1px;background:var(--gold)}
+    .pretitle{margin:28px 0 13px;font-size:13px;letter-spacing:.2em;color:#d4ccb9}
+    h1{margin:0;font-size:clamp(38px,5.2vw,68px);font-weight:400;line-height:1.34;letter-spacing:.11em;color:#fff8e9;text-shadow:0 4px 36px #0009}
+    h1 em{font-style:normal;color:#eddbad}
+    .description{margin:24px 0 0;font-size:13px;line-height:2.05;letter-spacing:.1em;color:#d5d2c8c4}
+    .actions{display:flex;align-items:center;gap:15px;margin-top:32px}
+    .enter{height:48px;display:inline-flex;align-items:center;gap:22px;padding:0 23px;border:1px solid #ead495;border-radius:999px;background:linear-gradient(120deg,#d8b862,#9d7c3e);color:#111722;text-decoration:none;font-size:12px;letter-spacing:.1em;box-shadow:0 10px 32px #0005;transition:transform .2s,filter .2s}
+    .enter:hover{transform:translateY(-2px);filter:brightness(1.08)}
+    .note{font-size:11px;letter-spacing:.08em;color:#e4d8bb8a}
+    .edition{display:flex;align-items:center;gap:14px;margin-top:38px;font:9px 'Cormorant Garamond',serif;letter-spacing:.22em;color:#dfd0aa8a}
+    .edition i{width:32px;height:1px;background:#dfc17d55}
+    .art{position:relative;justify-self:center;width:min(31vw,330px);height:min(60vh,500px);min-height:355px;display:grid;place-items:center;animation:rise 1s .18s both}
+    .orbit{position:absolute;width:116%;aspect-ratio:1;border:1px solid #d8bf7650;border-radius:50%;transform:rotate(-22deg)}
+    .orbit:after{content:"";position:absolute;inset:9%;border:1px solid #8cdcf12b;border-radius:50%;transform:rotate(52deg)}
+    .card{position:relative;width:78%;height:88%;border-radius:15px;overflow:hidden;isolation:isolate;transform:rotate(3deg);box-shadow:0 35px 90px #000a,0 0 50px #8fcae524;animation:float 6s ease-in-out infinite}
+    .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 52%}
+    .person{z-index:2}
+    .card-shade{position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,#09121b18 28%,#08101b05 48%,#050912e8 100%)}
+    .card-label{position:absolute;z-index:4;top:24px;left:24px;right:24px;display:flex;justify-content:space-between;align-items:center;font:500 8px 'Cormorant Garamond',serif;letter-spacing:.18em;color:#f3e9d3}
+    .card-label b{border:1px solid #dfc17d9c;padding:5px 7px;font-weight:400}
+    .name{position:absolute;z-index:4;left:25px;right:20px;bottom:34px;display:flex;flex-direction:column;gap:8px}
+    .name strong{font-size:29px;font-weight:400;letter-spacing:.17em;color:#fff8e9}
+    .name small{font:10px 'Cormorant Garamond',serif;letter-spacing:.15em;color:#ead9ab}
+    .frame{position:absolute;inset:14px;z-index:6;border:1px solid #ddc27c8a;border-radius:10px;pointer-events:none}
+    .foil{position:absolute;inset:0;z-index:5;background:linear-gradient(122deg,transparent 35%,#9deaff17 45%,#fff0c744 51%,#e4aafa20 58%,transparent 68%);mix-blend-mode:screen;pointer-events:none}
+    .caption{position:absolute;z-index:2;bottom:0;font:9px 'Cormorant Garamond',serif;letter-spacing:.22em;color:#e4d5b899}
+    @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes float{50%{transform:rotate(0deg) translateY(-9px)}}
+    @keyframes drift{to{transform:scale(1.09) translate3d(.45%,-.4%,0)}}
+    @media(max-width:760px){body{overflow:auto}.page{padding:23px 24px 21px}.top,.foot{font-size:8px;letter-spacing:.14em}main{grid-template-columns:1fr;gap:0;text-align:center;align-content:center}.copy{order:2;padding:6px 0 10px}.art{order:1;width:205px;height:min(35vh,300px);min-height:230px;margin:0 auto 14px}.card{height:88%;width:76%}.caption{font-size:8px}.kicker{justify-content:center;font-size:8px}.kicker i{width:18px}.pretitle{margin:12px 0 7px;font-size:11px}h1{font-size:clamp(29px,8vw,40px);line-height:1.32}.description{margin:12px 0 0;font-size:11px;line-height:1.8}.actions{justify-content:center;margin-top:19px}.enter{height:43px;padding:0 20px;font-size:11px}.note{display:none}.edition{justify-content:center;margin-top:21px;font-size:8px}.edition i{width:20px}.card-label{top:17px;left:18px;right:18px;font-size:7px}.name{left:19px;bottom:26px}.name strong{font-size:24px}.name small{font-size:8px}.foot{margin-top:20px}}
+    @media(max-width:390px){.page{padding-left:17px;padding-right:17px}.art{width:183px;height:27vh;min-height:206px}h1{font-size:29px}.edition{gap:9px}}
+    @media(prefers-reduced-motion:reduce){.backdrop,.copy,.art,.card{animation:none!important}.enter{transition:none}}
   </style>
 </head>
 <body>
-<main>
-  <p class="eyebrow">YICHUN1C · DIGITAL ARCHIVE</p>
-  <h1>数字收藏<small>COLLECTED OBJECTS · NO. 001</small></h1>
-  <a class="entry" href="/sunyanzi/" aria-label="进入孙燕姿 No.001 午夜典藏 3D 金箔收藏卡">
-    <span class="no">NO. 001 / 01</span>
-    <span class="name">孙燕姿 · 午夜典藏</span>
-    <span class="desc">3D 金箔收藏卡 · 可交互</span>
-    <span class="arrow"><span>ENTER THE ARCHIVE</span><span>→</span></span>
-  </a>
-  <p class="foot">A SMALL ARCHIVE OF INTERACTIVE OBJECTS.</p>
-</main>
+  <img class="backdrop" src="/sunyanzi/assets/background-clean.png" alt="">
+  <div class="shade"></div><div class="stars"></div>
+  <div class="page">
+    <header class="top"><span>YICHUN1C · DIGITAL ARCHIVE</span><span>COLLECTOR'S EDITION&nbsp; / &nbsp;001</span></header>
+    <main>
+      <section class="copy">
+        <div class="kicker"><i></i> A MIDNIGHT MEMORY</div>
+        <p class="pretitle">把夜色，收藏成一张卡</p>
+        <h1>海风停下时<br><em>听见她的声音</em></h1>
+        <p class="description">孙燕姿 · 午夜海蓝典藏卡<br>让海面、身影与镭射金光，随你的指尖一起转动。</p>
+        <div class="actions"><a class="enter" href="/sunyanzi/?enter=1">开启典藏 <span>↗</span></a><span class="note">拖动卡片，转动海面上的光</span></div>
+        <div class="edition"><span>NO. 001</span><i></i><span>LIMITED DIGITAL EDITION</span></div>
+      </section>
+      <div class="art" aria-hidden="true"><div class="orbit"></div><div class="card">
+        <img src="/sunyanzi/assets/background-clean.png" alt=""><img class="person" src="/sunyanzi/assets/subject-alpha.png" alt="">
+        <div class="card-shade"></div><div class="card-label"><span>THE VOICE · ARCHIVE</span><b>NO. 001</b></div>
+        <div class="name"><strong>孫燕姿</strong><small>SUN YANZI · 冷门歌手</small></div><div class="frame"></div><div class="foil"></div>
+      </div><div class="caption">MIDNIGHT BLUE&nbsp; · &nbsp;GOLD FOIL</div></div>
+    </main>
+    <footer class="foot"><span>AN INTERACTIVE COLLECTIBLE</span><span>01 — MADE FOR THE NIGHT</span></footer>
+  </div>
 </body>
 </html>
