@@ -12,14 +12,15 @@
   <style>
     :root{color-scheme:dark;--gold:#dfc17d;--cream:#f5ecd7;--ink:#09121c}
     *{box-sizing:border-box}
-    html,body{margin:0;min-height:100%;background:var(--ink);color:var(--cream)}
-    body{min-height:100svh;overflow:hidden;font-family:'Noto Serif SC',serif}
+    html,body{margin:0;min-height:100%;background:var(--ink);color:var(--cream);scroll-behavior:smooth}
+    body{min-height:100svh;overflow-x:hidden;font-family:'Noto Serif SC',serif}
+    #dust{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55}
     .backdrop{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%;filter:brightness(.53) saturate(.86);transform:scale(1.04);animation:drift 22s ease-in-out infinite alternate}
     .shade{position:fixed;inset:0;background:linear-gradient(90deg,#07111bf2 0%,#09131bd9 38%,#09131b60 72%,#06101b9c 100%),linear-gradient(0deg,#050a12d9,transparent 38%,#07101b4a);pointer-events:none}
     .stars{position:fixed;inset:0;opacity:.19;pointer-events:none;background-image:radial-gradient(#f5dfae .65px,transparent .8px);background-size:43px 43px;mask-image:linear-gradient(#000,transparent 72%)}
     .page{position:relative;z-index:1;min-height:100svh;display:flex;flex-direction:column;padding:clamp(22px,4vw,54px) clamp(22px,7vw,104px)}
     .top,.foot{display:flex;justify-content:space-between;align-items:center;gap:18px;font:500 9px 'Cormorant Garamond',serif;letter-spacing:.27em;color:#e7d9b7a8}
-    .top span:first-child{color:#e9d6a4}
+    .top span:first-child{color:#e9d6a4}.top nav{display:flex;gap:25px}.top nav a,.foot a{color:inherit;text-decoration:none;transition:color .2s}.top nav a:hover,.foot a:hover{color:var(--gold)}
     main{width:min(1120px,100%);margin:auto;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:4vw}
     .copy{padding:30px 0 40px;animation:rise .9s both}
     .kicker{display:flex;align-items:center;gap:13px;font:500 10px 'Cormorant Garamond',serif;letter-spacing:.32em;color:#e3c87e}
@@ -34,10 +35,10 @@
     .note{font-size:11px;letter-spacing:.08em;color:#e4d8bb8a}
     .edition{display:flex;align-items:center;gap:14px;margin-top:38px;font:9px 'Cormorant Garamond',serif;letter-spacing:.22em;color:#dfd0aa8a}
     .edition i{width:32px;height:1px;background:#dfc17d55}
-    .art{position:relative;justify-self:center;width:min(31vw,330px);height:min(60vh,500px);min-height:355px;display:grid;place-items:center;animation:rise 1s .18s both}
-    .orbit{position:absolute;width:116%;aspect-ratio:1;border:1px solid #d8bf7650;border-radius:50%;transform:rotate(-22deg)}
+    .art{position:relative;justify-self:center;width:min(31vw,330px);height:min(60vh,500px);min-height:355px;display:grid;place-items:center;animation:rise 1s .18s both;perspective:1000px}
+    .orbit{position:absolute;width:116%;aspect-ratio:1;border:1px solid #d8bf7650;border-radius:50%;transform:rotate(-22deg);animation:orbit 28s linear infinite}
     .orbit:after{content:"";position:absolute;inset:9%;border:1px solid #8cdcf12b;border-radius:50%;transform:rotate(52deg)}
-    .card{position:relative;width:78%;height:88%;border-radius:15px;overflow:hidden;isolation:isolate;transform:rotate(3deg);box-shadow:0 35px 90px #000a,0 0 50px #8fcae524;animation:float 6s ease-in-out infinite}
+    .card{position:relative;width:78%;height:88%;border-radius:15px;overflow:hidden;isolation:isolate;transform:rotate(3deg);box-shadow:0 35px 90px #000a,0 0 50px #8fcae524;animation:float 6s ease-in-out infinite;transition:transform .18s ease-out;will-change:transform}
     .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 52%}
     .person{z-index:2}
     .card-shade{position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,#09121b18 28%,#08101b05 48%,#050912e8 100%)}
@@ -47,21 +48,29 @@
     .name strong{font-size:29px;font-weight:400;letter-spacing:.17em;color:#fff8e9}
     .name small{font:10px 'Cormorant Garamond',serif;letter-spacing:.15em;color:#ead9ab}
     .frame{position:absolute;inset:14px;z-index:6;border:1px solid #ddc27c8a;border-radius:10px;pointer-events:none}
-    .foil{position:absolute;inset:0;z-index:5;background:linear-gradient(122deg,transparent 35%,#9deaff17 45%,#fff0c744 51%,#e4aafa20 58%,transparent 68%);mix-blend-mode:screen;pointer-events:none}
+    .foil{position:absolute;inset:0;z-index:5;background:linear-gradient(var(--foil-angle,122deg),transparent 28%,#9deaff22 41%,#fff0c766 49%,#e4aafa28 57%,transparent 71%);background-size:190% 190%;background-position:var(--foil-x,50%) var(--foil-y,50%);mix-blend-mode:screen;pointer-events:none;transition:background-position .12s ease-out}
     .caption{position:absolute;z-index:2;bottom:0;font:9px 'Cormorant Garamond',serif;letter-spacing:.22em;color:#e4d5b899}
+    .scroll-cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);font:8px 'Cormorant Garamond',serif;letter-spacing:.32em;color:#e7d9b766;text-decoration:none}.scroll-cue:after{content:"";display:block;width:1px;height:27px;margin:12px auto 0;background:linear-gradient(var(--gold),transparent);animation:cue 1.8s ease-in-out infinite}
+    .portfolio{position:relative;z-index:1;padding:110px clamp(22px,7vw,104px) 72px;background:linear-gradient(180deg,#09121c 0%,#0b1420 100%);border-top:1px solid #dfc17d20}
+    .portfolio-inner{width:min(1120px,100%);margin:0 auto}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:42px}.section-label{font:500 10px 'Cormorant Garamond',serif;letter-spacing:.34em;color:var(--gold)}.section-head h2{margin:13px 0 0;font-size:clamp(30px,4vw,48px);font-weight:400;letter-spacing:.12em;color:#fff8e9}.section-head p{max-width:330px;margin:0;color:#d5d2c899;font-size:12px;line-height:2;letter-spacing:.06em}
+    .work{display:grid;grid-template-columns:1.2fr .8fr;min-height:350px;border:1px solid #dfc17d42;background:#0c1723;overflow:hidden}.work-visual{position:relative;min-height:350px;overflow:hidden;isolation:isolate}.work-visual:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#07111b05 45%,#0c1723 100%),linear-gradient(0deg,#08111bc9,transparent 45%),url('/sunyanzi/assets/background-clean.png') center 48%/cover;transform:scale(1.03);transition:transform .8s cubic-bezier(.2,.7,.2,1)}.work:hover .work-visual:before{transform:scale(1.09)}.work-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 35%,#9deaff1c 47%,#fff0c744 51%,#e4aafa22 56%,transparent 68%);transform:translateX(-75%);transition:transform 1s ease;mix-blend-mode:screen}.work:hover .work-visual:after{transform:translateX(70%)}.work-index{position:absolute;left:24px;top:24px;z-index:1;font:10px 'Cormorant Garamond',serif;letter-spacing:.25em;color:#f3e9d3}.work-info{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;padding:clamp(25px,4vw,52px)}.work-info .kicker{font-size:9px}.work-info h3{margin:18px 0 12px;font-size:clamp(24px,3vw,35px);font-weight:400;letter-spacing:.12em;color:#fff8e9}.work-info p{margin:0;color:#d5d2c9a8;font-size:12px;line-height:2;letter-spacing:.06em}.work-meta{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 27px}.work-meta span{border:1px solid #dfc17d48;border-radius:99px;padding:6px 10px;color:#e6d3a7a8;font-size:10px;letter-spacing:.07em}.work-link{align-self:flex-start;color:#ead495;text-decoration:none;font-size:12px;letter-spacing:.12em;border-bottom:1px solid #dfc17d66;padding-bottom:6px}.work-link span{display:inline-block;margin-left:10px;transition:transform .2s}.work-link:hover span{transform:translateX(4px)}
+    .studies{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}.study{position:relative;min-height:174px;padding:23px;border:1px solid #dfc17d26;background:#0a141f;overflow:hidden;transition:border-color .25s,transform .25s}.study:hover{border-color:#dfc17d70;transform:translateY(-3px)}.study small{font:10px 'Cormorant Garamond',serif;letter-spacing:.22em;color:#d8bf76a8}.study h3{margin:26px 0 8px;font-size:16px;font-weight:400;letter-spacing:.1em;color:#f3ead5}.study p{margin:0;color:#aaa99f;font-size:11px;line-height:1.8}.study .sample{position:absolute;right:18px;top:20px;width:58px;height:58px;border:1px solid #dfc17d6b;border-radius:50%;opacity:.7}.sample.foil-sample{background:conic-gradient(from var(--sample-angle,0deg),#dfc17d,#8bdcf0,#f3e6bd,#d4a9ed,#dfc17d);animation:sample-spin 8s linear infinite}.sample.wave-sample:before,.sample.wave-sample:after{content:"";position:absolute;inset:10px;border:1px solid #8bdcf099;border-radius:50%;transform:scaleX(1.5);animation:wave 3s ease-in-out infinite}.sample.wave-sample:after{inset:17px;animation-delay:-1.5s}.sample.dust-sample{border:0;background:radial-gradient(circle at 25% 30%,#e8d28e 1px,transparent 2px),radial-gradient(circle at 70% 60%,#8bdcf0 1px,transparent 2px),radial-gradient(circle at 48% 80%,#fff2cf 1px,transparent 2px);background-size:29px 29px;animation:dust 4s ease-in-out infinite alternate}
+    .sources{display:flex;justify-content:space-between;gap:24px;align-items:center;margin-top:30px;color:#bcb4a299;font-size:10px;line-height:1.8}.sources a{color:#d9c99f;text-decoration:none;border-bottom:1px solid #d9c99f3c}.sources-links{display:flex;gap:14px;flex-wrap:wrap}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}.reveal.visible{opacity:1;transform:translateY(0)}
     @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
     @keyframes float{50%{transform:rotate(0deg) translateY(-9px)}}
     @keyframes drift{to{transform:scale(1.09) translate3d(.45%,-.4%,0)}}
-    @media(max-width:760px){body{overflow:auto}.page{padding:23px 24px 21px}.top,.foot{font-size:8px;letter-spacing:.14em}main{grid-template-columns:1fr;gap:0;text-align:center;align-content:center}.copy{order:2;padding:6px 0 10px}.art{order:1;width:205px;height:min(35vh,300px);min-height:230px;margin:0 auto 14px}.card{height:88%;width:76%}.caption{font-size:8px}.kicker{justify-content:center;font-size:8px}.kicker i{width:18px}.pretitle{margin:12px 0 7px;font-size:11px}h1{font-size:clamp(29px,8vw,40px);line-height:1.32}.description{margin:12px 0 0;font-size:11px;line-height:1.8}.actions{justify-content:center;margin-top:19px}.enter{height:43px;padding:0 20px;font-size:11px}.note{display:none}.edition{justify-content:center;margin-top:21px;font-size:8px}.edition i{width:20px}.card-label{top:17px;left:18px;right:18px;font-size:7px}.name{left:19px;bottom:26px}.name strong{font-size:24px}.name small{font-size:8px}.foot{margin-top:20px}}
-    @media(max-width:390px){.page{padding-left:17px;padding-right:17px}.art{width:183px;height:27vh;min-height:206px}h1{font-size:29px}.edition{gap:9px}}
-    @media(prefers-reduced-motion:reduce){.backdrop,.copy,.art,.card{animation:none!important}.enter{transition:none}}
+    @keyframes orbit{to{transform:rotate(338deg)}}@keyframes cue{50%{opacity:.35;transform:scaleY(.7);transform-origin:top}}@keyframes sample-spin{to{transform:rotate(360deg)}}@keyframes wave{50%{transform:scaleX(1.1) scaleY(.72);opacity:.35}}@keyframes dust{to{background-position:12px -9px, -9px 12px, 6px 8px}}
+    @media(max-width:760px){.page{padding:23px 24px 21px}.top,.foot{font-size:8px;letter-spacing:.14em}.top nav{gap:12px;font-size:7px}.top>span:last-child{display:none}main{grid-template-columns:1fr;gap:0;text-align:center;align-content:center}.copy{order:2;padding:6px 0 10px}.art{order:1;width:205px;height:min(35vh,300px);min-height:230px;margin:0 auto 14px}.card{height:88%;width:76%}.caption{font-size:8px}.kicker{justify-content:center;font-size:8px}.kicker i{width:18px}.pretitle{margin:12px 0 7px;font-size:11px}h1{font-size:clamp(29px,8vw,40px);line-height:1.32}.description{margin:12px 0 0;font-size:11px;line-height:1.8}.actions{justify-content:center;margin-top:19px}.enter{height:43px;padding:0 20px;font-size:11px}.note{display:none}.edition{justify-content:center;margin-top:21px;font-size:8px}.edition i{width:20px}.card-label{top:17px;left:18px;right:18px;font-size:7px}.name{left:19px;bottom:26px}.name strong{font-size:24px}.name small{font-size:8px}.foot{margin-top:20px}.scroll-cue{display:none}.portfolio{padding:75px 23px 48px}.section-head{display:block;margin-bottom:26px}.section-head p{margin-top:16px}.work{grid-template-columns:1fr}.work-visual{min-height:245px}.work-visual:before{background-position:50% 42%}.work-info{padding:26px}.studies{grid-template-columns:1fr;gap:10px}.study{min-height:140px;padding:20px}.study h3{margin-top:16px}.sources{display:block}.sources-links{margin-top:12px}}
+    @media(max-width:390px){.page{padding-left:17px;padding-right:17px}.art{width:183px;height:27vh;min-height:206px}h1{font-size:29px}.edition{gap:9px}.top nav{gap:8px}.top nav a:last-child{display:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.backdrop,.copy,.art,.card,.orbit,.scroll-cue:after,.sample,.sample:before,.sample:after{animation:none!important}.enter,.work-visual:before,.work-visual:after,.study,.reveal{transition:none!important}.reveal{opacity:1;transform:none}}
   </style>
 </head>
 <body>
   <img class="backdrop" src="/sunyanzi/assets/background-clean.png" alt="">
-  <div class="shade"></div><div class="stars"></div>
+  <canvas id="dust" aria-hidden="true"></canvas><div class="shade"></div><div class="stars"></div>
   <div class="page">
-    <header class="top"><span>YICHUN1C · DIGITAL ARCHIVE</span><span>COLLECTOR'S EDITION&nbsp; / &nbsp;001</span></header>
+    <header class="top"><span>YICHUN1C · DIGITAL ARCHIVE</span><nav aria-label="页面导航"><a href="#works">作品</a><a href="#studies">动效实验</a><a href="#about">关于</a></nav><span>COLLECTOR'S EDITION&nbsp; / &nbsp;001</span></header>
     <main>
       <section class="copy">
         <div class="kicker"><i></i> A MIDNIGHT MEMORY</div>
@@ -78,6 +87,31 @@
       </div><div class="caption">MIDNIGHT BLUE&nbsp; · &nbsp;GOLD FOIL</div></div>
     </main>
     <footer class="foot"><span>AN INTERACTIVE COLLECTIBLE</span><span>01 — MADE FOR THE NIGHT</span></footer>
+    <a class="scroll-cue" href="#works" aria-label="向下浏览作品集">SCROLL TO EXPLORE</a>
   </div>
+  <section class="portfolio" id="works">
+    <div class="portfolio-inner">
+      <div class="section-head reveal"><div><div class="section-label">SELECTED WORK · 2026</div><h2>把瞬间，做成可以触摸的作品</h2></div><p>一个仍在生长的数字作品集。收录交互实验、视觉设计，以及那些值得被收藏的片刻。</p></div>
+      <article class="work reveal"><div class="work-visual"><span class="work-index">01 / COLLECTIBLE EXPERIENCE</span></div><div class="work-info"><div class="kicker"><i></i> FEATURED PROJECT</div><h3>午夜海蓝 · 金箔典藏</h3><p>以孙燕姿的海边照片为灵感，把星夜、海面与镭射金箔做成一张可转动、可翻面的数字收藏卡。</p><div class="work-meta"><span>3D 视差</span><span>动态镭射</span><span>每日曲目</span></div><a class="work-link" href="/sunyanzi/">进入作品 <span>↗</span></a></div></article>
+      <div class="studies" id="studies">
+        <article class="study reveal"><div class="sample foil-sample"></div><small>STUDY 01</small><h3>金箔折光</h3><p>光泽跟随指针轻轻偏移。</p></article>
+        <article class="study reveal"><div class="sample wave-sample"></div><small>STUDY 02</small><h3>海面视差</h3><p>远近层次让静帧有了呼吸。</p></article>
+        <article class="study reveal"><div class="sample dust-sample"></div><small>STUDY 03</small><h3>夜航星尘</h3><p>靠近指针的微光会缓缓偏航。</p></article>
+      </div>
+      <footer class="sources" id="about"><span>YICHUN1C · 一春一丙<br>独立制作的数字小作品，慢慢更新。</span><div class="sources-links"><a href="https://github.com/micku7zu/vanilla-tilt.js" target="_blank" rel="noreferrer">VanillaTilt ↗</a><a href="https://github.com/michalsnik/aos" target="_blank" rel="noreferrer">AOS ↗</a><a href="https://github.com/tsparticles/tsparticles" target="_blank" rel="noreferrer">tsParticles ↗</a><span>交互灵感参考 · MIT</span></div></footer>
+    </div>
+  </section>
+  <script>
+    (()=>{
+      const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const card=document.querySelector('.card'), art=document.querySelector('.art');
+      if(card&&!reduce){art.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height,rx=(.5-y)*9,ry=(x-.5)*11;card.style.animationPlayState='paused';card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg) scale(1.015)`;card.style.setProperty('--foil-x',`${x*100}%`);card.style.setProperty('--foil-y',`${y*100}%`);card.style.setProperty('--foil-angle',`${115+ry*2}deg`)});art.addEventListener('pointerleave',()=>{card.style.animationPlayState='';card.style.transform='';card.style.setProperty('--foil-x','50%');card.style.setProperty('--foil-y','50%')})}
+      const reveals=[...document.querySelectorAll('.reveal')];if('IntersectionObserver'in window&&!reduce){const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');io.unobserve(entry.target)}}),{threshold:.14});reveals.forEach((el,i)=>{el.style.transitionDelay=`${(i%3)*90}ms`;io.observe(el)})}else reveals.forEach(el=>el.classList.add('visible'));
+      const canvas=document.querySelector('#dust'),ctx=canvas.getContext('2d',{alpha:true}),points=[];let w=0,h=0,raf=0,pointer={x:-1000,y:-1000};
+      const resize=()=>{const d=Math.min(devicePixelRatio||1,1.5);w=innerWidth;h=innerHeight;canvas.width=w*d;canvas.height=h*d;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(d,0,0,d,0,0);points.length=0;for(let i=0;i<Math.min(54,Math.floor(w*h/23000));i++)points.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.2+.35,a:Math.random()*.38+.12,v:Math.random()*.16+.04,p:Math.random()*6.28})};
+      const draw=()=>{ctx.clearRect(0,0,w,h);for(const p of points){p.p+=.008;p.y-=p.v;if(p.y<-3){p.y=h+3;p.x=Math.random()*w}const dx=p.x-pointer.x,dy=p.y-pointer.y,d=Math.hypot(dx,dy);if(d<90){p.x+=dx/(d||1)*.28;p.y+=dy/(d||1)*.28}ctx.globalAlpha=p.a*(.72+Math.sin(p.p)*.28);ctx.fillStyle='#ecd99d';ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()}ctx.globalAlpha=1;raf=requestAnimationFrame(draw)};
+      if(!reduce&&ctx){resize();draw();addEventListener('resize',resize,{passive:true});addEventListener('pointermove',e=>{pointer.x=e.clientX;pointer.y=e.clientY},{passive:true});document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(raf);else draw()})}
+    })();
+  </script>
 </body>
 </html>
